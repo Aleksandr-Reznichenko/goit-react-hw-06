@@ -1,9 +1,20 @@
+import { changeFilter, selectNameFilter } from '../../redux/filtersSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { GoSearch } from 'react-icons/go';
 
-import css from './SearchBox.module.css';
 import ContactCount from '../ContactCount/ContactCount';
 
-export default function SearchBox({ value, onFilter, contacts }) {
+import css from './SearchBox.module.css';
+
+export default function SearchBox() {
+  const value = useSelector(selectNameFilter);
+  const dispatch = useDispatch();
+
+  const handleChangeFilter = e => {
+    dispatch(changeFilter(e.target.value));
+  };
+
   return (
     <div className={css.box}>
       <span className={css.icon}>
@@ -13,11 +24,11 @@ export default function SearchBox({ value, onFilter, contacts }) {
         className={css.field}
         type="text"
         value={value}
-        onChange={e => onFilter(e.target.value)}
+        onChange={handleChangeFilter}
         placeholder="Search for contact by last name or phone number"
       />
       <div className={css.contactCount}>
-        <ContactCount count={contacts.length} />
+        <ContactCount />
       </div>
     </div>
   );
