@@ -16,8 +16,8 @@ export default function ContactList() {
   const filteredContacts = filters
     ? reversedContacts.filter(
         contact =>
-          contact.name.toLowerCase().includes(filters.toLowerCase()) ||
-          contact.number.includes(filters)
+          contact.name.toLowerCase().includes(filters.name.toLowerCase()) ||
+          contact.number.includes(filters.name)
       )
     : reversedContacts;
 

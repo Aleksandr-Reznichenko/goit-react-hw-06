@@ -8,7 +8,7 @@ import ContactCount from '../ContactCount/ContactCount';
 import css from './SearchBox.module.css';
 
 export default function SearchBox() {
-  const value = useSelector(selectNameFilter);
+  const { name } = useSelector(selectNameFilter);
   const dispatch = useDispatch();
 
   const handleChangeFilter = e => {
@@ -23,7 +23,7 @@ export default function SearchBox() {
       <input
         className={css.field}
         type="text"
-        value={value}
+        value={name}
         onChange={handleChangeFilter}
         placeholder="Search for contact by last name or phone number"
       />
