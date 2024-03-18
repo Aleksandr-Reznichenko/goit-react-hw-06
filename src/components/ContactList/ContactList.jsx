@@ -17,7 +17,7 @@ export default function ContactList() {
     ? reversedContacts.filter(
         contact =>
           contact.name.toLowerCase().includes(filters.name.toLowerCase()) ||
-          contact.number.includes(filters.name)
+          String(contact.number).includes(filters.name)
       )
     : reversedContacts;
 
